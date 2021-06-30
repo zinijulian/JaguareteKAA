@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% load static %} {% block title %} Home {% endblock %} {% block content %}
+
+<!-- Heading -->
+<div class="intro-text left-0 bg-faded p-4 rounded">
+    <div class="swiper-container mySwiper">
+        <h1>Articulos destacados de la semana:</h1>
+        <br>
+        <div class="swiper-wrapper">
+            {% for productos in productos %}
+            <div class="swiper-slide">
+                <div class="card text-center">
+                    <div class="card-header">
+                        {{productos.nombre}}
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <p><img src="../static/img/productos/{{productos.imagen}}" style="max-height: 400px;"></p>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <a href="../productos" class="btn btn-outline-secondary text-dark">VER</a> </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<br>
+<div class="container" style="max-width: 98%;">
+    <div class="card">
+        <div class="card-header h2">Otros artículos...</div>
+        {% for more in more %}
+        <div class="card-body">
+            <h4 class="card-title"><strong>{{more.nombre}}</strong></h4>
+            <p class="card-text text-justify">{{more.descripcion}}</p>
+            <a href="productos" class="card-link"><i><strong>ver más...</strong></i></a>
+        </div>
+        <hr> {% endfor %}
+    </div>
+</div>
+</div>
+{% endblock %}

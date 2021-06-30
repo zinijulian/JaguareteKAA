@@ -1,0 +1,76 @@
+{% extends "base.html" %} {% load static %} {% block title %} Carrito {% endblock %} {% block content %}
+<div class="bg-faded p-4 roundedr br-5">
+    <div>
+        <h2 class="display-5"><strong>Factura:</strong></h2>
+        <br>
+        <div class="container">
+            <form action="/factura/" method="POST">
+
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label">Nombre:</label>
+                            <input type="text" class="form-control" name="nombre" autofocus required maxlength="30">
+                            <br>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Apellido:</label>
+                            <input type="text" class="form-control" name="apellido" autofocus required maxlength="30">
+                            <br>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Dirección:</label>
+                            <input type="text" class="form-control" name="direccion" autofocus required maxlength="50" ">
+                                <br>
+                            </div>
+                        </div>
+                        <div class="col ">
+                                <table class="table table-bordered ">
+                                    <thead>
+                                        <tr>
+                                            <th>Producto</th>
+                                            <th>Cantidad</th>
+                                            <th>Subtotal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% if request.session.carro.items %} {% for key, value in request.session.carro.items %}
+                                        <tr class="text-center ">
+                                            <td>
+                                                <input type="text " name="producto " value="{{value.nombre}} " style="border: none; ">
+                                            </td>
+                                            <td>
+                                                <input type="text " name="cantidad[] " value="{{value.cantidad}} " style="border: none; ">
+                                            </td>
+                                            <td class="d-flex justify-aling.between ">
+                                                $
+                                                <input type="text " name="subtotal " value="{{value.precio}} " style="border: none; ">
+                                            </td>
+                                        </tr>
+                                        {% endfor %} {% else %}
+                                        <tr>
+                                            <td colspan="3 ">
+                                                <div class="text-center ">
+                                                    <h2 style="color: rgb(200, 10, 10); "><strong>Sin productos</strong></h2>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {% endif %}
+                                    </tbody>
+                                    <thead>
+                                        <tr>
+                                            <th colspan="3 " class="text-center ">
+                                                <strong>Total:</strong> $<input type="text " name="total " value="{{importeTotalCarro}} " style="border: none; ">
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                        </div>
+                    </div>
+                    <button type="submit " class="btn btn-primary ">Enviar pedido</button>
+                </form>
+            </div>        
+    </div>
+</div>
+{% endblock %}

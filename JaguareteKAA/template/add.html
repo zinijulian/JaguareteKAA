@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% load static %} {% block title %} ADD {% endblock %} {% block content %}
+<div class="bg-faded p-4 roundedr br-5">
+    <div>
+        <h2 class="display-5"><strong>Agregue un artículo</strong></h2>
+        <form class="form" action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %} {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Agregar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

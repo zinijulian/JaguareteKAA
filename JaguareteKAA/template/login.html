@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresar</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'img/logo.png' %}">
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+
+    <!-- Styles -->
+    <link href="{% static 'css/gestion.css' %}" rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+</head>
+
+<body>
+    <div style="margin: 2% 20%;">
+        <div class="bg-faded p-4 roundedr br-5" style="border-radius: 10px;">
+            <div>
+                <h1 class="mx-5 text-center"><strong>Ingreso</strong></h1>
+                <form class="form" method="post" style="margin: 2% 5%">
+                    {% csrf_token %} {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                    <p class="text-center p-0 m-0"><i><a href="../registro/">¿No posees una cuenta?</a></i></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- Bootstrap JS -->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- JS -->
+<script src="{% static 'JS/main.js' %}"></script>
+
+</html>

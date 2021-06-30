@@ -1,0 +1,12 @@
+{% extends "base.html" %} {% load static %} {% block title %} EDITAR {% endblock %} {% block content %}
+<div class="bg-faded p-4 roundedr br-5">
+    <div>
+        <h2 class="display-5"><strong>Actualizar un artículo</strong></h2>
+        <form class="form" action="../actualizar/{{articulo.id}}" method="post" enctype="multipart/form-data">
+            {% csrf_token %} {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+            <a href="../../productos" class="btn btn-danger">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

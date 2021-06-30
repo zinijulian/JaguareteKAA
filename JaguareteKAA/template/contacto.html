@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% load static %} {% block title %} Contacto {% endblock %} {% block content %}
+<div class="bg-faded p-4 roundedr br-5">
+    <div>
+        <h2 class="display-5"><strong>Envie su consulta</strong></h2>
+        <form action="/contacto/" method="POST">
+
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label">Asunto:</label>
+                <input type="text" class="form-control" name="asunto" aria-describedby="emailHelp" autofocus required maxlength="30" placeholder="Articulos en stock">
+                <br>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Correo electrónico:</label>
+                <input type="email" name="email" class="form-control" id="exampleInputEmail1" required maxlength="40" placeholder="email@example.com">
+                <div class="container">
+                    <p class="card-text"><small class="text-muted">*Se atenderá su correspondiente consulta a este correo</small></p>
+                </div>
+                <br>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Mensaje:</label>
+                <textarea class="form-control" name="mensaje" rows="10" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
